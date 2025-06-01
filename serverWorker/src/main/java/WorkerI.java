@@ -8,7 +8,9 @@ public class WorkerI implements Worker{
   @Override
   public String calcNumberInRange(int start, int end, Current current){
 
+    String res = "N/N";
     List<Integer> listOfPerfectNumbers = new ArrayList<>();;
+
 
     System.out.println("Worker at work...");
 
@@ -24,7 +26,14 @@ public class WorkerI implements Worker{
       }
     }
 
-    return "" + listOfPerfectNumbers;
+
+    if(!listOfPerfectNumbers.isEmpty()){
+      res = "" + listOfPerfectNumbers;
+    }
+
+
+
+    return res;
   }
 
 

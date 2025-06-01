@@ -16,8 +16,8 @@ public class Client {
         throw new Error("Proxy nulo - ¿Se pudo conectar al servidor?");
       }
 
-      double start = 1;
-      double end = 10000;
+      double start = 8000;
+      double end = 500000;
 
       // Realizar algunas operaciones de cálculo
       System.out.println("Llamando a la operacion: ");
