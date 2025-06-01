@@ -8,7 +8,7 @@ public class Server {
             Master object = new Master();
             adapter.add(object, com.zeroc.Ice.Util.stringToIdentity("CalculatorPerfectNum"));
             adapter.activate();
-            System.out.println("Servidor de cálculo en funcionamiento...");
+            System.out.println("Servidor de master en funcionamiento...");
             communicator.waitForShutdown();
         } 
     }

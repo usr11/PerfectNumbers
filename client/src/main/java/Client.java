@@ -16,13 +16,13 @@ public class Client {
         throw new Error("Proxy nulo - ¿Se pudo conectar al servidor?");
       }
 
-      double x = 8000;
-      double y = 10000;
+      double start = 1;
+      double end = 10000;
 
       // Realizar algunas operaciones de cálculo
       System.out.println("Llamando a la operacion: ");
 
-      System.out.println(calculatorPerfectNum.calNumber(x, y));
+      System.out.println(calculatorPerfectNum.calNumber(start, end));
 
     }
   }

@@ -10,7 +10,7 @@ public class WorkerI implements Worker{
 
     List<Integer> listOfPerfectNumbers = new ArrayList<>();;
 
-    System.out.println("Trabajando...");
+    System.out.println("Worker at work...");
 
     for (int n = start; n < end; n++) {
       long sum = 0;
@@ -24,7 +24,7 @@ public class WorkerI implements Worker{
       }
     }
 
-    return "Lista: " + listOfPerfectNumbers;
+    return "" + listOfPerfectNumbers;
   }
 
 
