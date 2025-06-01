@@ -8,5 +8,5 @@
 rootProject.name = 'PerfectNumbers'
 
 include 'client'
-include 'server'
+include 'serverMaster'
 include 'serverWorker'

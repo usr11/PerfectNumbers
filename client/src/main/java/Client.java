@@ -9,7 +9,7 @@ public class Client {
     Scanner sc = new Scanner(System.in);
 
     try (Communicator communicator = Util.initialize(args, "client.config")) {
-      ObjectPrx base = communicator.propertyToProxy("server.proxy");
+      ObjectPrx base = communicator.propertyToProxy("serverMaster.proxy");
       CalculatorPerfectNumPrx calculatorPerfectNum = CalculatorPerfectNumPrx.checkedCast(base);
 
       if (calculatorPerfectNum == null) {

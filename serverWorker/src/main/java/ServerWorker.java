@@ -9,7 +9,7 @@ public class ServerWorker {
             WorkerI object = new WorkerI();
             adapter.add(object, com.zeroc.Ice.Util.stringToIdentity("Worker"));
             adapter.activate();
-            System.out.println("Servidor de cálculo workers en funcionamiento...");
+            System.out.println("Servidor workers en funcionamiento...");
             communicator.waitForShutdown();
         } 
     }
