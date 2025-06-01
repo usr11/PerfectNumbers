@@ -4,37 +4,26 @@ import java.util.Scanner;
 import java.util.concurrent.CompletableFuture;
 
 public class Client {
-    public static void main(String[] args) throws java.lang.Exception {
+  public static void main(String[] args) throws java.lang.Exception {
 
-        Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in);
 
-        try (Communicator communicator = Util.initialize(args, "client.config")) {
+    try (Communicator communicator = Util.initialize(args, "client.config")) {
+      ObjectPrx base = communicator.propertyToProxy("server.proxy");
+      CalculatorPerfectNumPrx calculatorPerfectNum = CalculatorPerfectNumPrx.checkedCast(base);
 
-          ObjectPrx base = communicator.propertyToProxy("server.proxy");
+      if (calculatorPerfectNum == null) {
+        throw new Error("Proxy nulo - ¿Se pudo conectar al servidor?");
+      }
 
-          CalculatorPerfectNumPrx calculatorPerfectNum = CalculatorPerfectNumPrx.checkedCast(base);
+      double x = 8000;
+      double y = 10000;
 
+      // Realizar algunas operaciones de cálculo
+      System.out.println("Llamando a la operacion: ");
 
-          if (calculatorPerfectNum == null) {
-              throw new Error("Proxy nulo - ¿Se pudo conectar al servidor?");
-          }
+      System.out.println(calculatorPerfectNum.calNumber(x, y));
 
-
-            
-          double x = 1;
-          double y = 20;
-
-
-
-          // Realizar algunas operaciones de cálculo
-          System.out.println("Llamando a la operacion: ");
-
-
-          System.out.println(calculatorPerfectNum.calNumber(x, y));
-
-
-
-			
-        }
     }
+  }
 }

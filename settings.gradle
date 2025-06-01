@@ -9,3 +9,4 @@ rootProject.name = 'PerfectNumbers'
 
 include 'client'
 include 'server'
+include 'serverWorker'
