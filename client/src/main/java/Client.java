@@ -28,7 +28,7 @@ public class Client {
 
       while (option != 2) {
 
-        System.out.println("1. Para ingresar un rango.");
+        System.out.println("\n\n 1. Para ingresar un rango.");
         System.out.println("2. Para salir.");
 
         option = sc.nextInt();
@@ -42,9 +42,14 @@ public class Client {
             System.out.println("Llamando a la operacion: ");
             System.out.println(calculatorPerfectNum.calNumber(start, end));
             break;
+          
+          case 2:
+            System.out.println("Chaooo.");
+
+            break;
         
           default:
-            System.out.println("Chaooo.");
+            System.out.println("Opcion no valida.");
             break;
         }
         
