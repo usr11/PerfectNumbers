@@ -1,4 +1,3 @@
-import CalcNum.*;
 import com.zeroc.Ice.*;
 
 public class ServerWorker {

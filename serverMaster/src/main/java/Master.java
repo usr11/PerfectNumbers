@@ -26,12 +26,12 @@ public class Master implements CalculatorPerfectNum {
   }
 
   @Override
-  public String calNumber(double x, double y, Current current) {
+  public String calNumber(int start, int end, Current current) {
+
     String res = "N/N";
 
     try {
-      int start = (int) x;
-      int end = (int) y;
+
       int totalRange = end - start + 1;
       int numWorkers = calculateOptimalWorkers(totalRange);
 
@@ -51,8 +51,8 @@ public class Master implements CalculatorPerfectNum {
           currentEnd += remainder; // ultimo worker
         }
 
-        final int workerStart = currentStart;
-        final int workerEnd = currentEnd;
+        int workerStart = currentStart;
+        int workerEnd = currentEnd;
 
         long startTime = System.currentTimeMillis();
         CompletableFuture<String> future = worker.calcNumberInRangeAsync(workerStart, workerEnd)

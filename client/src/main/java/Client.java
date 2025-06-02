@@ -13,16 +13,44 @@ public class Client {
       CalculatorPerfectNumPrx calculatorPerfectNum = CalculatorPerfectNumPrx.checkedCast(base);
 
       if (calculatorPerfectNum == null) {
+      
         throw new Error("Proxy nulo - ¿Se pudo conectar al servidor?");
+      
       }
 
-      double start = 8000;
-      double end = 500000;
+      int option = 0;
+      int start = 0;
+      int end = 0;
 
-      // Realizar algunas operaciones de cálculo
-      System.out.println("Llamando a la operacion: ");
 
-      System.out.println(calculatorPerfectNum.calNumber(start, end));
+      System.out.println("Bienvenido!!! Aqui podras calcular numeros perfectos en un rango de manera eficiente: ");
+
+
+      while (option != 2) {
+
+        System.out.println("1. Para ingresar un rango.");
+        System.out.println("2. Para salir.");
+
+        option = sc.nextInt();
+
+        switch (option) {
+          case 1:
+            System.out.println("Ingresa el primer numero:");
+            start = sc.nextInt();
+            System.out.println("Ingresa el segundo numero:");
+            end = sc.nextInt();
+            System.out.println("Llamando a la operacion: ");
+            System.out.println(calculatorPerfectNum.calNumber(start, end));
+            break;
+        
+          default:
+            System.out.println("Chaooo.");
+            break;
+        }
+        
+      }
+      
+      
 
     }
   }
