@@ -1,7 +1,7 @@
 module CalcNum {
 
   interface CalculatorPerfectNum {
-    string calNumber(double x, double y);
+    string calNumber(int x, int y);
   }
 
   interface Worker {
