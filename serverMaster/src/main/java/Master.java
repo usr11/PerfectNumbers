@@ -8,7 +8,7 @@ import java.lang.Exception;
 public class Master implements CalculatorPerfectNum {
 
   private static WorkerPrx worker;
-  private static final int MAX_CONCURRENT_TASKS = 10;
+  private static final int MAX_CONCURRENT_TASKS = 20;
 
   public Master() {
     try {
@@ -26,14 +26,23 @@ public class Master implements CalculatorPerfectNum {
   }
 
   @Override
-  public String calNumber(int start, int end, Current current) {
+  public String calNumber(int start, int end, int workers, Current current) {
 
     String res = "N/N";
 
     try {
 
       int totalRange = end - start + 1;
-      int numWorkers = calculateOptimalWorkers(totalRange);
+      int numWorkers = 0;
+      if(workers == -1){
+
+        numWorkers = calculateOptimalWorkers(totalRange);
+      
+      } else {
+
+        numWorkers = workers;
+
+      }
 
       long inicialTime = System.currentTimeMillis();
 
@@ -62,7 +71,7 @@ public class Master implements CalculatorPerfectNum {
             synchronized (tiempos) {
               tiempos.add(duration);
             }
-            return " de (" + workerStart + ") - (" + workerEnd + "): " + result + " - tiempo(ms): " + duration;
+            return " de [" + workerStart + "," + workerEnd + "): " + result + " - tiempo(ms): " + duration;
           });
 
         futures.add(future);
