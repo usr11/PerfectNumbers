@@ -29,7 +29,33 @@ java -jar serverWorker/build/libs/serverWorker.jar
 java -jar serverMaster/build/libs/serverMaster.jar  
 `
 
-**Paso 4:** En otra terminal ejecutar en la terminal donde esta el cliente.
+
+**Paso 4:** En otra terminal, ejecutar el cliente con la interfaz gráfica (GUI).
+
+./gradlew :client:run
+
+Una vez abierta la interfaz gráfica:
+
+1. Ingresa el rango de búsqueda:
+   - "Start of range": número inicial del rango (ejemplo: 1)
+   - "End of range": número final del rango (ejemplo: 10000)
+
+2. (Opcional) Ingresa el número de workers (entre 1 y 20).
+   - Si se deja vacío, el sistema asigna los workers automáticamente.
+
+3. Presiona el botón "Find Perfect Numbers".
+
+4. En la sección de resultados se mostrará:
+   - Los números perfectos encontrados por cada worker.
+   - El rango procesado por cada uno.
+   - El tiempo individual y total de ejecución.
+
+Si los servidores no están activos o hay error de conexión, se mostrará el mensaje:
+"Communication error with ICE: java.net.ConnectException: Connection refused"
+
+Recuerda que todos los servidores deben estar activos antes de iniciar el cliente GUI.
+
+**Paso 5: (Opcional interaccion por consola)** En otra terminal ejecutar en la terminal donde esta el cliente.
 
 `
 java -jar client/build/libs/client.jar
@@ -50,7 +76,3 @@ java -jar client/build/libs/client.jar
 - **Opcion 3:**
   - Saldras de nuestro programa.
 
- ## Muestra de resultados.
-
-
- .
