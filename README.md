@@ -45,7 +45,9 @@ Una vez abierta la interfaz gráfica:
 
 3. Presiona el botón "Find Perfect Numbers".
 
-4. En la sección de resultados se mostrará:
+4. Una vez presionado el boton y si no sale ningun error espere el resultado.
+
+5. En la sección de resultados se mostrará:
    - Los números perfectos encontrados por cada worker.
    - El rango procesado por cada uno.
    - El tiempo individual y total de ejecución.

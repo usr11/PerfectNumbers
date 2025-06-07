@@ -44,7 +44,7 @@ public class ClientGUI extends Application {
         grid.add(txtWorkers, 1, 2);
 
         grid.add(btnSearch, 0, 3, 2, 1);
-        grid.add(new Label("Results:"), 0, 4);
+        grid.add(new Label("Results: once given search, wait for it to load"), 0, 4);
         grid.add(txtResults, 0, 5, 2, 1);
         grid.add(lblTime, 0, 6, 2, 1);
 
