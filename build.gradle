@@ -7,6 +7,8 @@
 plugins {
 
   id 'com.zeroc.gradle.ice-builder.slice' version '1.5.0' apply false
+  id 'org.openjfx.javafxplugin' version '0.0.14'
+  id 'application'
 
 }
 
@@ -17,6 +19,7 @@ subprojects {
   //
   apply plugin: 'java'
   apply plugin: 'com.zeroc.gradle.ice-builder.slice'
+  apply plugin: 'org.openjfx.javafxplugin'
   //
   // Both Client and Server projects share the Printer.ice Slice definitions
   //
@@ -34,6 +37,11 @@ subprojects {
 
     mavenCentral()
   
+  }
+  
+  javafx {
+      version = "21"
+      modules = [ 'javafx.controls', 'javafx.fxml' ]
   }
   
   //
@@ -58,4 +66,12 @@ subprojects {
     
     }
   }
+}
+
+project(":client") {
+    apply plugin: 'application'
+
+    application {
+        mainClass = 'ClientGUI'
+    }
 }

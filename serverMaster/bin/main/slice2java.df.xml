@@ -1,0 +1,15 @@
+<state>
+  <timestamp value='1749336454649' />
+  <sourceSet name='default'>
+    <source name='C:\Users\Juan Pablo\Desktop\V\Computacion y internet I\PerfectNumbers\calNumber.ice'>
+      <file name='C:\Users\Juan Pablo\Desktop\V\Computacion y internet I\PerfectNumbers\serverMaster\build\generated-src\CalcNum\CalculatorPerfectNum.java' />
+      <file name='C:\Users\Juan Pablo\Desktop\V\Computacion y internet I\PerfectNumbers\serverMaster\build\generated-src\CalcNum\Worker.java' />
+      <file name='C:\Users\Juan Pablo\Desktop\V\Computacion y internet I\PerfectNumbers\serverMaster\build\generated-src\CalcNum\CalculatorPerfectNumPrx.java' />
+      <file name='C:\Users\Juan Pablo\Desktop\V\Computacion y internet I\PerfectNumbers\serverMaster\build\generated-src\CalcNum\_CalculatorPerfectNumPrxI.java' />
+      <file name='C:\Users\Juan Pablo\Desktop\V\Computacion y internet I\PerfectNumbers\serverMaster\build\generated-src\CalcNum\WorkerPrx.java' />
+      <file name='C:\Users\Juan Pablo\Desktop\V\Computacion y internet I\PerfectNumbers\serverMaster\build\generated-src\CalcNum\_WorkerPrxI.java' />
+    </source>
+    <arg value='C:\Program Files\ZeroC\Ice-3.7.10\\bin\slice2java.exe' />
+    <arg value='-IC:\Program Files\ZeroC\Ice-3.7.10\\slice' />
+  </sourceSet>
+</state>
