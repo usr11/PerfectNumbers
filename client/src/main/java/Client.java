@@ -1,79 +1,88 @@
 import CalcNum.*;
 import com.zeroc.Ice.*;
 import java.util.Scanner;
-import java.util.concurrent.CompletableFuture;
 
 public class Client {
-  public static void main(String[] args) throws java.lang.Exception {
 
-    Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws java.lang.Exception {
 
-    try (Communicator communicator = Util.initialize(args, "client.config")) {
-      ObjectPrx base = communicator.propertyToProxy("serverMaster.proxy");
-      CalculatorPerfectNumPrx calculatorPerfectNum = CalculatorPerfectNumPrx.checkedCast(base);
+        Scanner sc = new Scanner(System.in);
 
-      if (calculatorPerfectNum == null) {
-      
-        throw new Error("Proxy nulo - ¿Se pudo conectar al servidor?");
-      
-      }
+        try (Communicator communicator = Util.initialize(args, "client.config")) {
+            ObjectPrx base = communicator.propertyToProxy("serverMaster.proxy");
+            CalculatorPerfectNumPrx calculatorPerfectNum = CalculatorPerfectNumPrx.checkedCast(base);
 
-      int option = 0;
-      int start = 0;
-      int end = 0;
-      
-      
-      System.out.println("Bienvenido!!! Aqui podras calcular numeros perfectos en un rango de manera eficiente: ");
-      
-      
-      while (option != 3) {
-        
-        int workers = -1;
+            if (calculatorPerfectNum == null) {
+                throw new Error("Null proxy - could not connect to the master server.");
+            }
 
-        System.out.println("\n\n1. Para ingresar un rango y que el numero de workers se establezcan.");
-        System.out.println("2. Para ingresar un rango y un numero de trabajadores especifico (De 1 a 20).");
-        System.out.println("3. Para salir.");
+            int option = 0;
+            int start = 0;
+            int end = 0;
 
-        option = sc.nextInt();
+            System.out.println("Welcome! This program finds perfect numbers in a range efficiently:");
 
-        switch (option) {
-          case 1:
-          
-            System.out.println("Ingresa el primer numero:");
-            start = sc.nextInt();
-            System.out.println("Ingresa el segundo numero:");
-            end = sc.nextInt();
-            System.out.println("Llamando a la operacion: ");
-            System.out.println(calculatorPerfectNum.calNumber(start, end+1, workers));
-            break;
-          
-          case 2:
-            
-            System.out.println("Ingresa el numero de trabajadores: ");
-            workers = sc.nextInt();
-            System.out.println("Ingresa el primer numero:");
-            start = sc.nextInt();
-            System.out.println("Ingresa el segundo numero:");
-            end = sc.nextInt();
-            System.out.println("Llamando a la operacion: ");
-            System.out.println(calculatorPerfectNum.calNumber(start, end+1, workers));
-            break;
-          
-          case 3:
-          
-            System.out.println("Chaooo.");
+            while (option != 3) {
+                int workers = -1;
 
-            break;
-        
-          default:
-            System.out.println("Opcion no valida.");
-            break;
+                System.out.println("\n1. Enter a range with default number of workers.");
+                System.out.println("2. Enter a range and a specific number of workers (1 to 20).");
+                System.out.println("3. Exit.");
+
+                option = sc.nextInt();
+
+                switch (option) {
+                    case 1:
+                        System.out.println("Enter the start number:");
+                        start = sc.nextInt();
+                        System.out.println("Enter the end number:");
+                        end = sc.nextInt();
+                        System.out.println("Calling the operation:");
+                        System.out.println(calculatorPerfectNum.calNumber(start, end + 1, workers));
+                        break;
+
+                    case 2:
+                        System.out.println("Enter the number of workers:");
+                        workers = sc.nextInt();
+                        System.out.println("Enter the start number:");
+                        start = sc.nextInt();
+                        System.out.println("Enter the end number:");
+                        end = sc.nextInt();
+                        System.out.println("Calling the operation:");
+                        System.out.println(calculatorPerfectNum.calNumber(start, end + 1, workers));
+                        break;
+
+                    case 3:
+                        System.out.println("Goodbye.");
+                        break;
+
+                    default:
+                        System.out.println("Invalid option.");
+                        break;
+                }
+            }
         }
-        
-      }
-      
-      
-
     }
-  }
+
+    public static String findPerfectNumbers(int start, int end, int workers) {
+        StringBuilder result = new StringBuilder();
+
+        try (Communicator communicator = Util.initialize(new String[]{}, "client.config")) {
+            ObjectPrx base = communicator.propertyToProxy("serverMaster.proxy");
+            CalculatorPerfectNumPrx calculatorPerfectNum = CalculatorPerfectNumPrx.checkedCast(base);
+
+            if (calculatorPerfectNum == null) {
+                return "Could not connect to the master server.";
+            }
+
+            result.append(calculatorPerfectNum.calNumber(start, end + 1, workers));
+        } catch (com.zeroc.Ice.Exception e) {
+            return "Communication error with ICE: " + e.getMessage();
+        }
+        return result.toString();
+    }
+
+    public static String findPerfectNumbers(int start, int end) {
+        return findPerfectNumbers(start, end, -1);
+    }
 }
